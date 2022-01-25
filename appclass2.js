@@ -35,10 +35,8 @@ class Screen {
         this.personList = document.querySelector('.person-list');
         this.personList.addEventListener('click', this.updateOrDelete.bind(this));
 
-        //localStorage islemleri için kullanılır
         this.db = new LocalStorage();
-        //update ve delete butonlarına basıldıgında
-        //ilgili tr elementi burda tutulur.
+        
         this.selectedRow = undefined;
         this.printPersonsOnScreeen();
     }
@@ -65,7 +63,7 @@ class Screen {
         const resultt = Util.controlEmptyArea(person.name, person.surname, person.mail);
         const isEmailValid = Util.isEmailValid(this.mail.value);
         console.log(this.mail.value + " result of Email control:" + isEmailValid);
-        //tüm alanlar doldurulmus
+            // If all areas are filled
         if (resultt) {
 
             if (!isEmailValid) {
@@ -74,13 +72,9 @@ class Screen {
             }
 
             if (this.selectedRow) {
-                //secilen satır undefined değilse güncellenecek demektir
+                //If selectedRow is not undefined
                 this.updatePersonOnScreen(person);
             } else {
-                //secilen satır undefined ise ekleme yapılacaktır
-                //yeni kişiyi ekrana ekler
-
-                //localStorage ekle
                 const res = this.db.addPerson(person);
                 console.log("result :" + res + " inside the saveUpdate.");
                 if (res) {
@@ -94,7 +88,7 @@ class Screen {
             }
 
 
-        } else { //bazı alanlar eksik
+        } else { //If some areas are not filled
             this.infoCreate('Please Fill Empty Areas.', false);
         }
     }
@@ -126,13 +120,11 @@ class Screen {
 
     updatePersonOnScreen(pers) {
 
-
         const result = this.db.updatePerson(pers, this.selectedRow.cells[2].textContent);
         if (result) {
             this.selectedRow.cells[0].textContent = pers.name;
             this.selectedRow.cells[1].textContent = pers.surname;
             this.selectedRow.cells[2].textContent = pers.mail;
-
 
             this.clearAreas();
             this.selectedRow = undefined;
@@ -142,10 +134,7 @@ class Screen {
         } else {
             this.infoCreate('This Email has already been taken.', false);
         }
-
-
-
-
+        
     }
 
     removePersonOnScreen() {
@@ -175,14 +164,12 @@ class Screen {
         </td>`;
 
         this.personList.appendChild(createdTR);
-
     }
 
 }
 
 class LocalStorage {
-    //uygulama ilk açıldıgında veriler getirilir.
-
+    
     constructor() {
         this.allPersons = this.fetchPersons();
     }
@@ -192,7 +179,7 @@ class LocalStorage {
             return pers.mail === mail;
         });
 
-        //demekki bu maili kulalnan biri var
+        //The Email is not unique
         if (result) {
             console.log(mail + " has already been used.");
             return false;
@@ -229,9 +216,7 @@ class LocalStorage {
         });
         localStorage.setItem('Persons', JSON.stringify(this.allPersons));
     }
-
-    //guncellenmisKisi : yeni değerleri içerir
-    //mail kişinin veritabanında bulunması için gerekli olan eski mailini içerir.
+    
     updatePerson(updatedPerson, mail) {
 
         if (updatedPerson.mail === mail) {
@@ -243,7 +228,6 @@ class LocalStorage {
                     return true;
                 }
             });
-
             return true;
         }
 
@@ -258,18 +242,12 @@ class LocalStorage {
                     return true;
                 }
             });
-
             return true;
-
-
-
-
-        } else {
+        }
+        else {
             console.log(updatedPerson.mail + " is on usage so cannot be updated.");
             return false;
         }
-
-
 
     }
 
