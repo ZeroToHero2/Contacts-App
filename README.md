@@ -7,3 +7,6 @@
 # Authors
 - Bahadır Ünal [Profile](https://github.com/ZeroToHero2). 👍
 
+# UI/Operation Snippets 
+-> CRUD Operations:
+
