@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacts App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./skeleton/normalize.css">
+    <link rel="stylesheet" href="./skeleton/skeleton.css">
+    <link rel="stylesheet" href="main2.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Contacts App</h1>
+
+        <div class="information"></div>
+        
+
+        <form id="form-contacts">
+            <div>
+                <label for="name">Name</label>
+                <input type="text" id="name" class="u-full-width">
+            </div>
+            <div>
+                <label for="surname">Surname</label>
+                <input type="text" id="surname" class="u-full-width">
+            </div>
+            <div>
+                <label for="mail">Email</label>
+                <input type="text" id="mail" class="u-full-width">
+            </div>
+            <div>
+                <input  class="button-primary u-full-width saveUpdate" type="submit" value="Save">
+            </div>
+        </form>
+
+        <hr>
+
+        <table class="u-full-width">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody class="person-list">
+                
+             
+            </tbody>
+        </table>
+
+
+    </div>
+    <script src="appclass2.js"></script>
+</body>
+</html>
