@@ -8,5 +8,5 @@
 - Bahadır Ünal [Profile](https://github.com/ZeroToHero2). 👍
 
 # UI/Operation Snippets 
--> CRUD Operations:
+> CRUD Operations:
 
